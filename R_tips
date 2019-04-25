@@ -1,0 +1,58 @@
+#'data.frame':	353 obs. of  5 variables:
+     $ years   : int  12 8 5 8 12 17 4 10 4 3 ...
+     $ position: Factor w/ 6 levels "catcher","first base",..: 4 5 2 6 3 3 3 1 5 3 ...
+     $ race    : Factor w/ 3 levels "black","hispan",..: 3 1 3 3 1 1 2 3 2 1 ...
+     $ gamesyr : num  142.1 114.8 150.2 132 99.7 ...
+     $ lsalary : num  15.7 15 14.9 14.9 14.3 ...
+     
+ #Translating into dummy variables
+#We can translate the factor variable into dummy variables. We can do this using the following type of commands
+
+mydata$frstbase <- as.numeric(mydata$position == "first base")  # as.numeric translates to numerical - here from logical
+
+"""which creates a new variable in the data frame called frstbase that takes a value of 1 if the player is a first base player and 0 otherwise. Other dummy variables can be used accordingly. 
+Once you have done this you can proceed as in the previous sections."""
+
+
+"""Using factor variables directly
+One very nice aspect of R is that you can use such factor variables directly in regressions. For instance we could estimate a regression lsalary, using years and gamesyr as explanatory variables but also include intercept dummies for the different positions. 
+The straightforward way to do that is as follows:"""
+
+    reg_ex1 <- lm(lsalary~years+gamesyr+position,data=mydata)
+    print(summary(reg_ex1))
+    
+    Call:
+    lm(formula = lsalary ~ years + gamesyr + position, data = mydata)
+    
+    Residuals:
+         Min       1Q   Median       3Q      Max 
+    -2.71524 -0.46973 -0.00695  0.45610  2.73707 
+    
+    Coefficients:
+                         Estimate Std. Error t value Pr(>|t|)    
+    (Intercept)         11.352508   0.129846  87.430  < 2e-16 ***
+    years                0.067257   0.012551   5.359 1.54e-07 ***
+    gamesyr              0.021095   0.001412  14.935  < 2e-16 ***
+    positionfirst base  -0.190074   0.157450  -1.207  0.22818    
+    positionoutfielder  -0.129669   0.126458  -1.025  0.30590    
+    positionsecond base -0.470353   0.167849  -2.802  0.00536 ** 
+    positionshort stop  -0.362002   0.150584  -2.404  0.01674 *  
+    positionthird base  -0.126807   0.168252  -0.754  0.45156    
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    
+    Residual standard error: 0.7455 on 345 degrees of freedom
+    Multiple R-squared:  0.6105,	Adjusted R-squared:  0.6026 
+    F-statistic: 77.24 on 7 and 345 DF,  p-value: < 2.2e-16
+    
+    """When you compare the summary statistics to those of the first regression we estimated in this dummy variable section, then you will realise that they are identical, we essentially estimated the same model. 
+    There is, however, one difference. In the previous estimation we use outfielders as the base category (i.e. the respective dummy variables was excluded). Here we can see that R automatically includes dummy variables for the different positions, but for one, here the catcher position. 
+    R chose to drop the catcher position as this is the position which comes first in the alphabet.Inherent in a factor variable in R is that R uses one of the values as its reference value and by default this is the value first in the alphabet as we saw in the above regression. 
+    There is, however, a way to let R know to change the reference value. The way to do this is as follows:"""
+
+mydata$position <- relevel(mydata$position, ref = "outfielder")
+
+    reg_ex1 <- lm(lsalary~years+gamesyr+position,data=mydata)
+    print(summary(reg_ex1))
+#reference: http://eclr.humanities.manchester.ac.uk/index.php/Dummy_Variables_in_R
+
