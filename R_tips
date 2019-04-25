@@ -57,3 +57,4 @@ mydata$position <- relevel(mydata$position, ref = "outfielder")
     print(summary(reg_ex1))
 #reference: http://eclr.humanities.manchester.ac.uk/index.php/Dummy_Variables_in_R
 
+# Probit_model: https://www.youtube.com/watch?v=A9P888Lxde8
