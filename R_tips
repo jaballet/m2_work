@@ -1,3 +1,9 @@
+#%% 
+R_code_too_long--> 
+Soft-wrapping text is actually set in the Global Options menu rather than Project Options - check under Tools > Global Options > Code Editing > Soft-wrap R source files
+like GIt
+#%%
+
 #Dummy variables_R
 #'data.frame':	353 obs. of  5 variables:
      $ years   : int  12 8 5 8 12 17 4 10 4 3 ...
