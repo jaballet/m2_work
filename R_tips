@@ -64,3 +64,18 @@ mydata$position <- relevel(mydata$position, ref = "outfielder")
 #reference: http://eclr.humanities.manchester.ac.uk/index.php/Dummy_Variables_in_R
 
 # Probit_model: https://www.youtube.com/watch?v=A9P888Lxde8
+
+#%% 
+#expand.grid는 모든 벡터 또는 인자(factor)의 조합인 데이터 프레임을 생성하며 흔히 자료를 시각화할 때 많이 사용된다.
+expand.grid() 
+> expand.grid(h = c(60, 80), w = c(100, 300), sex = c("Male", "Female"))
+h w sex
+1 60 100 Male
+2 80 100 Male
+3 60 300 Male
+4 80 300 Male
+5 60 100 Female
+6 80 100 Female
+7 60 300 Female
+8 80 300 Female
+
