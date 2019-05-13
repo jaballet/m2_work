@@ -79,3 +79,24 @@ h w sex
 7 60 300 Female
 8 80 300 Female
 
+##Data exploartion excercise
+#Data explotation
+d<-data.frame(id=1:10,name=c('Bob','Bobby','???','Bob','Bab','Jim','Jim','jim','','Jim'),score1=c(8,10,7,9,2,5,1,6,3,4),score2=c(3,4,5,-999,5,5,-999,2,3,4),stringsAsFactors = FALSE)
+d
+summary(d)
+
+#which values in score2 are -999?
+i<-d$score2==-999
+#set these to NA
+d$score2[i]<-NA
+summary(d)
+
+quantile(d$score1)
+quantile(d$score2,na.rm = TRUE)
+
+#make plots
+par(mfrow=c(2,2))
+plot(d$score1,d$score2)
+boxplot(d[,c('score1','score2')])
+plot(sort(d$score1))
+hist(d$score2)
