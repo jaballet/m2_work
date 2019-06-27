@@ -1,0 +1,17 @@
+#WGS84경위도를 Bessel경위도로 변환(Javascript)
+<script src='../lib/proj4js-combined.js'></script>
+ 
+<script type='text/javascript'>
+Proj4js.reportError = function(msg) { alert(msg); }
+Proj4js.defs['WGS84경위도'] = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs';
+Proj4js.defs['BESSEL경위도'] = 
+    '+proj=longlat +ellps=bessel +towgs84=-146.43,507.89,681.46 +no_defs'; 
+ 
+var wgs84 = new Proj4js.Proj('WGS84경위도');
+var bessel = new Proj4js.Proj('BESSEL경위도');
+ 
+var p = new Proj4js.Point(128.0, 38.0);
+Proj4js.transform(wgs84, bessel, p);
+ 
+alert(p.x + " " + p.y);
+</script>
