@@ -100,3 +100,14 @@ plot(d$score1,d$score2)
 boxplot(d[,c('score1','score2')])
 plot(sort(d$score1))
 hist(d$score2)
+
+#Shapefile열기
+#Load library
+library(raster)
+
+#Load shapefile
+shp <- shapefile("myshapefile")
+ 
+>setwd("D:/OTHERS")
+> library(raster)
+> s1<-shapefile("seoul_bike")
