@@ -8,4 +8,17 @@ print(total)
 
 
 
+#이렇게 해도 됨
+total=0
+for i in range(1,101):
+    total += i
+print(total)
+
+
+#리스트를 생성하고 저장하기
+app=[] #저장해 주기 위해 생성
+app=list(range(1,1001)) 
+app.append(app)
+print(app)
+
 
