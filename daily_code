@@ -1,0 +1,11 @@
+#1부터 100까지 합(2019_07_04)
+a = list(range(1,101))
+
+total = 0
+for i in a: 
+    total = total + i     # 'total +=i'와 동일한 코드
+print(total)
+
+
+
+
