@@ -1,4 +1,4 @@
-#1부터 100까지 합(2019_07_04)
+###1부터 100까지 합(2019_07_04)
 a = list(range(1,101))
 
 total = 0
@@ -7,18 +7,23 @@ for i in a:
 print(total)
 
 
-
-#이렇게 해도 됨
+###이렇게 해도 됨
 total=0
 for i in range(1,101):
     total += i
 print(total)
 
 
-#리스트를 생성하고 저장하기
+####리스트를 생성하고 저장하기
 app=[] #저장해 주기 위해 생성
 app=list(range(1,1001)) 
 app.append(app)
 print(app)
+
+####홍길동 점수구하기(2019_07_07):딕셔너리 활용
+홍길동={'국어':80, '영어':75, '수학':55}
+print(len(홍길동))
+scores=[80,75,55]
+print(sum(scores)/len(홍길동))
 
 
