@@ -111,3 +111,6 @@ shp <- shapefile("myshapefile")
 >setwd("D:/OTHERS")
 > library(raster)
 > s1<-shapefile("seoul_bike")
+> plot(s1)
+
+
